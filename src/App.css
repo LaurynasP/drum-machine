@@ -13,7 +13,7 @@ body {
 }
 #drum-machine {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
 }
 #drum-pad-container {
   display:grid;
@@ -21,15 +21,20 @@ body {
   column-gap: 0.5em;
   row-gap: 0.5em;
   padding: 0.5em;
-  background-color: red;
-}
-#settings {
-  background-color: blue;
+  border: 5px solid #E67F0D;
+  border-radius: 5px;
 }
 
 .drum-pad {
-  width: 4em;
-  height: 4em;
+  padding:2em;
   background-color: #E67F0D;
   border-radius: 0.5em;
+}
+
+button {
+  border: 2px solid #011f2d;
+  background-color: #034b6d;
+  color: white;
+  margin: 1em;
+  padding:1em;
 }

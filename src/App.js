@@ -103,15 +103,16 @@ const audiosetTwo = [
 class DrumButton extends Component {
   constructor(props){
     super(props);
+    this.playAudio = this.playAudio.bind(this);
   }
   playAudio = (event) => {
     const sound = document.getElementById(this.props.keyTrigger);
     sound.currentTime = 0;
     sound.play();
-    this.props.setDisplay("fuck");
+    this.props.setDisplay(this.props.id);
   }
   handleKeyPress = (event) => {
-    if (event.keyCode == this.props.keyCode) {
+    if (event.keyCode === this.props.keyCode) {
       this.playAudio();
     }
   }
@@ -124,7 +125,8 @@ class DrumButton extends Component {
   render(){
     return(
       <div  className="drum-pad"
-            onClick={this.playAudio}>
+            onClick={this.playAudio}
+            id={this.props.id}>
         <audio className='clip' id={this.props.keyTrigger} src={this.props.url}></audio>
         {this.props.keyTrigger}
       </div>
@@ -175,7 +177,7 @@ class App extends Component {
       power: true,
       audioset: audiosetOne,
       audiosetID: "audiosetOne",
-      display: "Heater Set",
+      display: "Heater set",
     };
   };
 //_____________________HANDLERS____________________
@@ -185,7 +187,7 @@ class App extends Component {
     this.setState({power: true});
   }
 
-  setDisplay = (text) => (e) => {
+  setDisplay = (text) => {
     this.setState({
       display: text
     })
@@ -196,8 +198,8 @@ class App extends Component {
         this.setState({
           audioset: audiosetTwo,
           audiosetID: "audiosetTwo",
+          display: "Piano set"
         });
-        this.setDisplay("Piano set");
       }
       else {
         this.setState({
